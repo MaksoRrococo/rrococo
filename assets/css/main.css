@@ -25,6 +25,8 @@ body {
   scroll-behavior: smooth;
   height: 100%;
   min-width: 320px;
+  --radius-x: 30em;
+  --radius-y: 10em;
 }
 
 body {
@@ -1252,6 +1254,11 @@ body::after {
   display: grid;
 }
 
+.view-content {
+  width: 100vw;
+  margin: 0 auto;
+}
+
 .view .svg-bg,
 .view .svg-bg-mob {
   position: absolute;
@@ -1267,6 +1274,8 @@ body::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+  justify-content: center;
 }
 
 .view__img {

@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { initSliders } from '../utils/init_sliders'
+import { tabs } from '../utils/init_tabs'
+import { menuInit } from '../utils/main_menu'
+
+const { width } = useWindowSize()
 
 onMounted(() => {
     initSliders()
+	tabs()
+	menuInit()
 })
 
 </script>
@@ -120,7 +126,7 @@ onMounted(() => {
 						</path>
 					</clipPath>
 				</svg>
-				<div class="view__container">
+				<div class="view-content">
 					<div class="view__body">
 						<div class="view__head head-section head-section--gold">
 							<h2 class="head-section__title">
@@ -134,19 +140,13 @@ onMounted(() => {
 							</div>
 						</div>
 						<div class="view__images">
-							<div class="view__img">
-								<picture><source srcset="~/assets/img/view/image-1.webp" type="image/webp"><img src="~/assets/img/view/image-1.png" alt="image 1"></picture>
-							</div>
-							<div class="view__img view__img--big">
-								<picture><source srcset="~/assets/img/view/image-2.webp" type="image/webp"><img src="~/assets/img/view/image-2.png" alt="image 2"></picture>
-							</div>
-							<div class="view__img">
-								<picture><source srcset="~/assets/img/view/image-3.webp" type="image/webp"><img src="~/assets/img/view/image-3.png" alt="image 3"></picture>
-							</div>
+							<!-- <LandingViewSlider v-if="width < 800" /> -->
+							<LandingCircularSlider />
+							
 						</div>
-						<button type="button" class="view__button">
+						<!-- <button type="button" class="view__button">
 							<img src="~/assets/img/view/icon-360.svg" alt="icon-360">
-						</button>
+						</button> -->
 					</div>
 				</div>
 			</section>
@@ -221,6 +221,7 @@ onMounted(() => {
 					</div>
 					<div class="advantages__slider swiper">
 						<div class="advantages__wrapper swiper-wrapper">
+							<UITitl>
 							<div class="advantages__slide swiper-slide card-advantages">
 								<div class="card-advantages__number">
 									01
@@ -236,6 +237,7 @@ onMounted(() => {
 									<picture><source srcset="~/assets/img/advantages/image-1.webp" type="image/webp"><img src="~/assets/img/advantages/image-1.png" alt="image-1"></picture>
 								</div>
 							</div>
+						</UITitl>
 							<div class="advantages__slide swiper-slide card-advantages">
 								<div class="card-advantages__number">
 									02
