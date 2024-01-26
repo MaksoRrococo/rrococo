@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const el = ref<HTMLElement>()
-const timer = ref<typeof setTimeout | null>(null)
+const timer = ref<ReturnType<typeof setTimeout>| null>(null)
 
 const reverseValue = computed(() => {
     return props.reverse ? -1 : 1

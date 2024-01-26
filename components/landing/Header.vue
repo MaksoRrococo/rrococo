@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+const contactsStore = useContactsStore()
 </script>
 
 <template>
@@ -101,8 +101,8 @@
 						</nav>
 					</div>
 					<div class="header__info">
-						<a href="tel:380505456787" class="header__phone">
-							+38 050 545 67 87
+						<a :href="`tel:${contactsStore.additionalInfo?.tel}`" class="header__phone">
+							{{contactsStore.additionalInfo?.tel}}
 						</a>
 						<div class="header__work-time">
 							c 9:00-до 20:00 без перерывов и вх.

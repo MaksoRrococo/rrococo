@@ -3,6 +3,15 @@ import { initSliders } from '../utils/init_sliders'
 import { tabs } from '../utils/init_tabs'
 import { menuInit } from '../utils/main_menu'
 
+const contactsStore = useContactsStore()
+const galleryStore = useGalleryStore()
+const productsStore = useProductsStore()
+const testimonialsStore = useTestimonialsStore()
+
+
+const isVideoEnabled = ref<boolean>(false)
+const allProductsShow = ref<boolean>(false)
+
 const { width } = useWindowSize()
 
 onMounted(() => {
@@ -30,61 +39,11 @@ onMounted(() => {
 						</svg>
 					</div>
 					<ul class="socials-head__list">
-						<li class="socials-head__item">
-							<a href="#" class="socials-head__link">
-								<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<g clip-path="url(#clip0_250_253)">
-										<path d="M19.2068 12.1549C19.797 7.18728 18.9233 4.05108 17.3474 2.63258L17.3482 2.63176C14.8046 0.209341 6.21448 -0.1492 3.17141 2.74056C1.80484 4.15411 1.32349 6.2287 1.27073 8.79701C1.21798 11.3661 1.15534 16.1788 5.63999 17.4844H5.64411L5.63999 19.4782C5.63999 19.4782 5.60949 20.286 6.12546 20.4483C6.71561 20.6396 6.98266 20.2645 8.81822 18.0721C11.8877 18.3383 14.245 17.7284 14.5128 17.6394C15.1327 17.4317 18.6398 16.9676 19.2068 12.1549ZM9.12072 16.6692C9.12072 16.6692 7.178 19.0917 6.57384 19.7205C6.37602 19.925 6.15925 19.906 6.16255 19.5005C6.16255 19.2343 6.17738 16.1904 6.17738 16.1904C2.3752 15.1007 2.5994 11.0027 2.64061 8.85883C2.68182 6.71418 3.07415 4.95774 4.23137 3.77497C6.90106 1.27178 14.4321 1.83143 16.3509 3.63485C18.6966 5.71438 17.8617 11.5895 17.8666 11.7898C17.3845 15.8071 14.5425 16.0618 14.0199 16.2357C13.7966 16.3099 11.7236 16.8432 9.12072 16.6692Z" fill="#84663E" />
-										<path d="M10.1955 4.24597C9.87819 4.24597 9.87819 4.74051 10.1955 4.74463C12.6575 4.76359 14.6851 6.47964 14.7074 9.62738C14.7074 9.95954 15.1937 9.95542 15.1895 9.62326C15.1632 6.23155 12.9484 4.26493 10.1955 4.24597Z" fill="#84663E" />
-										<path d="M13.434 9.10562C13.4266 9.43366 13.9121 9.44932 13.9162 9.11715C13.9566 7.24697 12.8035 5.70649 10.6366 5.54411C10.3193 5.52103 10.2863 6.01969 10.6028 6.04277C12.482 6.18536 13.4719 7.46787 13.434 9.10562Z" fill="#84663E" />
-										<path d="M12.9146 11.2335C12.5075 10.9977 12.0929 11.1444 11.9214 11.3761L11.5629 11.8401C11.3807 12.0758 11.0403 12.0445 11.0403 12.0445C8.5561 11.3876 7.89177 8.78796 7.89177 8.78796C7.89177 8.78796 7.86127 8.43602 8.08876 8.24727L8.53714 7.87636C8.76133 7.69833 8.9031 7.26973 8.67479 6.84855C8.06485 5.74655 7.65521 5.36658 7.44668 5.0748C7.22744 4.80033 6.89774 4.73852 6.55486 4.92397H6.54744C5.83448 5.34103 5.05394 6.12158 5.30368 6.9252C5.72981 7.77251 6.51283 10.4735 9.0086 12.5143C10.1815 13.4795 12.0377 14.4686 12.8256 14.6969L12.833 14.7084C13.6095 14.9672 14.3645 14.1562 14.7675 13.4218V13.416C14.9464 13.0608 14.887 12.7245 14.6257 12.5044C14.1625 12.0527 13.4636 11.5541 12.9146 11.2335Z" fill="#84663E" />
-										<path d="M10.976 7.38395C11.7681 7.43011 12.1522 7.84387 12.1934 8.69366C12.2082 9.02582 12.6904 9.00274 12.6756 8.67058C12.6228 7.56116 12.0442 6.94299 11.0024 6.88529C10.6851 6.86634 10.6554 7.365 10.976 7.38395Z" fill="#84663E" />
-									</g>
-									<defs>
-										<clipPath id="clip0_250_253">
-											<rect width="19.7816" height="19.7816" fill="white" transform="translate(0.121826 0.704346)" />
-										</clipPath>
-									</defs>
-								</svg>
-							</a>
-						</li>
-						<li class="socials-head__item">
-							<a href="#" class="socials-head__link">
-								<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<g clip-path="url(#clip0_250_245)">
-										<path d="M14.3825 11.1865C14.3471 11.1695 13.0203 10.5161 12.7846 10.4313C12.6883 10.3967 12.5852 10.363 12.4755 10.363C12.2964 10.363 12.1459 10.4523 12.0286 10.6276C11.8961 10.8246 11.4949 11.2936 11.3709 11.4337C11.3548 11.4522 11.3327 11.4743 11.3194 11.4743C11.3075 11.4743 11.1022 11.3898 11.0401 11.3628C9.61681 10.7445 8.5365 9.25781 8.38837 9.0071C8.36722 8.97106 8.36633 8.95469 8.36615 8.95469C8.37135 8.9356 8.41921 8.88762 8.44391 8.86287C8.51618 8.79137 8.59447 8.69712 8.67022 8.60595C8.70609 8.56276 8.74201 8.51951 8.77729 8.47874C8.88719 8.35087 8.93611 8.2516 8.99284 8.13662L9.02256 8.07688C9.16106 7.80171 9.04277 7.56949 9.00454 7.49451C8.97316 7.43176 8.41295 6.07971 8.35339 5.93767C8.21016 5.5949 8.0209 5.4353 7.7579 5.4353C7.7335 5.4353 7.7579 5.4353 7.65556 5.43962C7.53095 5.44487 6.85233 5.53422 6.55228 5.72336C6.23409 5.92396 5.6958 6.56341 5.6958 7.68796C5.6958 8.70008 6.33808 9.65571 6.61385 10.0192C6.6207 10.0283 6.63329 10.0469 6.65155 10.0736C7.70762 11.6159 9.02416 12.7589 10.3588 13.2921C11.6436 13.8053 12.2521 13.8646 12.598 13.8646H12.598C12.7434 13.8646 12.8597 13.8532 12.9624 13.8431L13.0275 13.8369C13.4713 13.7976 14.4468 13.2921 14.6686 12.6756C14.8434 12.1899 14.8895 11.6593 14.7732 11.4667C14.6936 11.3358 14.5563 11.2699 14.3825 11.1865Z" fill="#84663E" />
-										<path d="M10.1773 0.729492C5.24844 0.729492 1.23851 4.70929 1.23851 9.60111C1.23851 11.1833 1.66193 12.732 2.46405 14.0875L0.928773 18.6163C0.900174 18.7007 0.921446 18.7941 0.983902 18.8577C1.02899 18.9037 1.09014 18.9285 1.1526 18.9285C1.17653 18.9285 1.20064 18.9249 1.22415 18.9174L5.94645 17.4168C7.2387 18.1073 8.69923 18.4717 10.1774 18.4717C15.1058 18.4718 19.1153 14.4924 19.1153 9.60111C19.1153 4.70929 15.1058 0.729492 10.1773 0.729492ZM10.1773 16.6237C8.78644 16.6237 7.4393 16.2221 6.2813 15.4623C6.24236 15.4367 6.19715 15.4236 6.15166 15.4236C6.12761 15.4236 6.1035 15.4272 6.08004 15.4347L3.71446 16.1866L4.47812 13.9337C4.50281 13.8607 4.49046 13.7803 4.44497 13.7182C3.56314 12.5132 3.097 11.0896 3.097 9.60111C3.097 5.72832 6.2732 2.57752 10.1772 2.57752C14.0808 2.57752 17.2567 5.72832 17.2567 9.60111C17.2567 13.4734 14.0809 16.6237 10.1773 16.6237Z" fill="#84663E" />
-									</g>
-									<defs>
-										<clipPath id="clip0_250_245">
-											<rect width="18.199" height="18.199" fill="white" transform="translate(0.91626 0.72937)" />
-										</clipPath>
-									</defs>
-								</svg>
-							</a>
-						</li>
-						<li class="socials-head__item">
-							<a href="#" class="socials-head__link">
-								<svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M16.2569 0.75976L15.982 0.857261L1.05982 6.1149C0.954078 6.14688 0.86217 6.21227 0.798506 6.30081C0.734843 6.38936 0.703022 6.49606 0.708032 6.60419C0.713043 6.71232 0.754601 6.81577 0.826192 6.89833C0.897784 6.98088 0.995362 7.03787 1.10363 7.06036L4.96636 8.09446L5.68694 10.1627L6.40751 12.2308C6.44891 12.3322 6.51499 12.4222 6.60001 12.4929C6.68503 12.5637 6.78642 12.6131 6.89539 12.6368C7.00435 12.6605 7.11759 12.6579 7.22528 12.6291C7.33296 12.6003 7.43183 12.5463 7.51331 12.4716L9.50887 10.628L13.4275 13.2265C13.9064 13.5456 14.5892 13.3093 14.7115 12.7833L17.3068 1.56931C17.4337 1.01385 16.8355 0.557373 16.2569 0.75976ZM14.352 3.24898L7.60999 8.6381L7.29275 8.89219C7.22306 8.94622 7.17757 9.02461 7.16586 9.11083L7.09486 9.68401L6.89999 11.2942C6.90159 11.3138 6.89517 11.3332 6.88214 11.3482C6.8691 11.3632 6.85053 11.3725 6.8305 11.374C6.81046 11.3756 6.79061 11.3693 6.77532 11.3566C6.76002 11.3438 6.75052 11.3257 6.74892 11.3061L6.20056 9.69731L5.63406 8.05014C5.6101 7.9761 5.61329 7.89621 5.64307 7.82422C5.67284 7.75222 5.72735 7.69264 5.79721 7.65571L12.8127 3.72319L14.133 2.98455C14.3248 2.87523 14.5212 3.11307 14.352 3.24898Z" fill="#84663E" />
-								</svg>
-							</a>
-						</li>
-						<li class="socials-head__item">
-							<a href="#" class="socials-head__link">
-								<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<g clip-path="url(#clip0_250_237)">
-										<path d="M10.6776 0.734009H4.14565C2.01977 0.734009 0.290283 2.46349 0.290283 4.58938V11.1214C0.290283 13.2472 2.01977 14.9767 4.14565 14.9767H10.6777C12.8035 14.9767 14.533 13.2472 14.533 11.1214V4.58938C14.533 2.46349 12.8035 0.734009 10.6776 0.734009ZM7.41163 11.7497C5.26423 11.7497 3.51725 10.0028 3.51725 7.85536C3.51725 5.70795 5.26423 3.96098 7.41163 3.96098C9.55903 3.96098 11.306 5.70795 11.306 7.85536C11.306 10.0028 9.55903 11.7497 7.41163 11.7497ZM11.3991 4.8794C10.7645 4.8794 10.2484 4.36325 10.2484 3.72866C10.2484 3.09406 10.7645 2.5778 11.3991 2.5778C12.0337 2.5778 12.55 3.09406 12.55 3.72866C12.55 4.36325 12.0337 4.8794 11.3991 4.8794Z" fill="#84663E" />
-										<path d="M7.4117 4.79614C5.72482 4.79614 4.35229 6.16856 4.35229 7.85555C4.35229 9.54244 5.72482 10.915 7.4117 10.915C9.0987 10.915 10.4711 9.54244 10.4711 7.85555C10.4711 6.16856 9.0987 4.79614 7.4117 4.79614Z" fill="#84663E" />
-										<path d="M11.399 3.41302C11.2249 3.41302 11.0833 3.55472 11.0833 3.7288C11.0833 3.90288 11.2249 4.04457 11.399 4.04457C11.5732 4.04457 11.7149 3.90299 11.7149 3.7288C11.7149 3.55461 11.5732 3.41302 11.399 3.41302Z" fill="#84663E" />
-									</g>
-									<defs>
-										<clipPath id="clip0_250_237">
-											<rect width="14.2427" height="14.2427" fill="white" transform="translate(0.290283 0.734253)" />
-										</clipPath>
-									</defs>
-								</svg>
-							</a>
+						<li class="socials-head__item"
+							v-for="social in contactsStore.socials"
+							:key="social.id"
+						>
+							<UISocialIcon :social="social.social" :link="social.link"/>
 						</li>
 					</ul>
 				</div>
@@ -195,10 +154,10 @@ onMounted(() => {
 								</p>
 							</div>
 							<div class="about__bottom">
-								<button type="button" class="about__btn btn">
+								<a href="#products" type="button" class="about__btn btn">
 									<span>Сделать заказ</span>
-								</button>
-								<a href="#" class="about__link">
+								</a>
+								<a href="#questions" class="about__link">
 									Есть вопросы? Напишите нам и мы с радостью поможем!
 								</a>
 							</div>
@@ -221,7 +180,7 @@ onMounted(() => {
 					</div>
 					<div class="advantages__slider swiper">
 						<div class="advantages__wrapper swiper-wrapper">
-							<UITitl>
+							
 							<div class="advantages__slide swiper-slide card-advantages">
 								<div class="card-advantages__number">
 									01
@@ -237,7 +196,7 @@ onMounted(() => {
 									<picture><source srcset="~/assets/img/advantages/image-1.webp" type="image/webp"><img src="~/assets/img/advantages/image-1.png" alt="image-1"></picture>
 								</div>
 							</div>
-						</UITitl>
+						
 							<div class="advantages__slide swiper-slide card-advantages">
 								<div class="card-advantages__number">
 									02
@@ -315,9 +274,9 @@ onMounted(() => {
 						<div class="swiper-scrollbar"></div>
 						<div class="swiper-pagination"></div>
 					</div>
-					<button type="button" class="advantages__btn btn">
+					<a href="#products" class="advantages__btn btn">
 						<span>Сделать заказ</span>
-					</button>
+					</a>
 				</div>
 			</section>
 			<section id="video" class="video">
@@ -339,14 +298,14 @@ onMounted(() => {
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
 						</div>
 					</div>
-					<div class="video__body">
+					<div class="video__body" :class="{'video-enabled' : isVideoEnabled}">
 						<div class="video__video-block">
-							<iframe src="https://www.youtube.com/embed/k6Yh7CpR-SQ?si=E9yVw2Ur_J6KOQrH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+							<iframe :src="contactsStore.additionalInfo?.portfolioUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 							</iframe>
 						</div>
 						<div class="video__video-preloader">
 							<picture><source srcset="~/assets/img/video-preloader.webp" type="image/webp"><img src="~/assets/img/video-preloader.jpg" alt="img"></picture>
-							<button type="button" class="video__video-play">
+							<button type="button" class="video__video-play" @click="isVideoEnabled = true">
 								<svg width="28" height="31" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M27 13.7679C28.3333 14.5377 28.3333 16.4623 27 17.2321L3.75 30.6554C2.41667 31.4252 0.749998 30.463 0.749999 28.9234L0.75 2.07661C0.75 0.537005 2.41667 -0.425246 3.75 0.344554L27 13.7679Z" fill="#84663E" />
 								</svg>
@@ -369,381 +328,29 @@ onMounted(() => {
 						</div>
 					</div>
 					<div class="products__slider swiper">
-						<div class="products__wrapper swiper-wrapper">
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-1.webp" type="image/webp"><img src="~/assets/img/products/product-1.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ЛУКРЕЦИЯ
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-2.webp" type="image/webp"><img src="~/assets/img/products/product-2.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ВИТТОРИЯ
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-3.webp" type="image/webp"><img src="~/assets/img/products/product-3.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ФЕЛИЧЕ
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-4.webp" type="image/webp"><img src="~/assets/img/products/product-4.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										МАДЛЕН
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-5.webp" type="image/webp"><img src="~/assets/img/products/product-5.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ИЗАБЕЛЛА
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-6.webp" type="image/webp"><img src="~/assets/img/products/product-6.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ВИТТОРИЯ
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-7.webp" type="image/webp"><img src="~/assets/img/products/product-7.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ФЕЛИЧЕ
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-8.webp" type="image/webp"><img src="~/assets/img/products/product-8.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										МАДЛЕН
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
-							<div class="products__slide swiper-slide product-card">
-								<div class="product-card__body">
-									<div class="product-card__img">
-										<picture><source srcset="~/assets/img/products/product-9.webp" type="image/webp"><img src="~/assets/img/products/product-9.png" alt="product"></picture>
-									</div>
-									<a href="#" class="product-card__name">
-										ИЗАБЕЛЛА
-									</a>
-									<div class="product-card__text">
-										В упаковке <span>« Лукреция »</span> легко сочетаются роскошь и изысканность,
-										плавные линии и нежные оттенки никого не оставят равнодушным!
-									</div>
-									<div class="product-card__size-block">
-										<div class="product-card__size-info">
-											<div class="product-card__size-title">
-												Размер:
-											</div>
-											<div class="product-card__size">
-												35Х15 см
-											</div>
-										</div>
-										<div class="product-card__size-text">
-											размеры могут быть любые, уточняйте при заказе
-										</div>
-									</div>
-									<div class="product-card__price-block">
-										<div class="product-card__price-text">
-											Стоимость:
-										</div>
-										<div class="product-card__price">
-											от
-											<span>
-												2 500 ₴
-											</span>
-										</div>
-									</div>
-									<a href="#" class="product-card__link btn">
-										<span>Подробнее</span>
-									</a>
-								</div>
-							</div>
+						<div class="products__wrapper swiper-wrapper" v-if="allProductsShow">
+							<LandingProductCard 
+								v-for="product in productsStore.products"
+								:key="product.id"
+								:product="product"
+							/>
+
+						</div>
+						<div class="products__wrapper swiper-wrapper" v-else>
+							<LandingProductCard 
+								v-for="product in productsStore.getSomeProducts"
+								:key="product.id"
+								:product="product"
+							/>
+
 						</div>
 						<div class="swiper-scrollbar"></div>
 						<div class="swiper-pagination"></div>
 					</div>
-					<button type="button" class="products__more btn">
+					<button type="button" class="products__more btn" 
+						v-if="productsStore.products.length > 5"
+						@click="allProductsShow = true"
+					>
 						<span>Показать больше</span>
 					</button>
 				</div>
@@ -766,64 +373,12 @@ onMounted(() => {
 					</div>
 					<div class="gallery__slider swiper">
 						<div class="gallery__wrapper swiper-wrapper">
-							<div class="gallery__slide swiper-slide">
+							<div class="gallery__slide swiper-slide" 
+								v-for="slide in galleryStore.gallery"
+								:key="slide.id"
+							>
 								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-1.webp" type="image/webp"><img src="~/assets/img/gallery/image-1.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-2.webp" type="image/webp"><img src="~/assets/img/gallery/image-2.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-3.webp" type="image/webp"><img src="~/assets/img/gallery/image-3.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-4.webp" type="image/webp"><img src="~/assets/img/gallery/image-4.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-5.webp" type="image/webp"><img src="~/assets/img/gallery/image-5.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-6.webp" type="image/webp"><img src="~/assets/img/gallery/image-6.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-2.webp" type="image/webp"><img src="~/assets/img/gallery/image-2.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-1.webp" type="image/webp"><img src="~/assets/img/gallery/image-1.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-3.webp" type="image/webp"><img src="~/assets/img/gallery/image-3.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-4.webp" type="image/webp"><img src="~/assets/img/gallery/image-4.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-5.webp" type="image/webp"><img src="~/assets/img/gallery/image-5.jpg" alt="image"></picture>
-								</div>
-							</div>
-							<div class="gallery__slide swiper-slide">
-								<div class="gallery__slide-img">
-									<picture><source srcset="~/assets/img/gallery/image-6.webp" type="image/webp"><img src="~/assets/img/gallery/image-6.jpg" alt="image"></picture>
+									<img :src="slide.image" alt="image">
 								</div>
 							</div>
 						</div>
@@ -857,10 +412,10 @@ onMounted(() => {
 							</p>
 						</div>
 						<div class="info__bottom">
-							<button type="button" class="info__btn btn">
+							<a href="#products" class="info__btn btn">
 								<span>Сделать заказ</span>
-							</button>
-							<a href="#" class="info__link">
+							</a>
+							<a href="#questions" class="info__link">
 								Есть вопросы? Напишите нам и мы с радостью поможем!
 							</a>
 						</div>
@@ -875,7 +430,7 @@ onMounted(() => {
 					</div>
 				</div>
 			</section>
-			<section id="review" class="review">
+			<section id="review" class="review" v-if="testimonialsStore.testimonials.length > 1">
 				<div class="review__container">
 					<div class="review__head head-section">
 						<h2 class="head-section__title">
@@ -897,31 +452,11 @@ onMounted(() => {
 						<div class="review__inner">
 							<div class="review__slider swiper">
 								<div class="review__wrapper swiper-wrapper">
-									<div class="review__slide swiper-slide">
-										<div class="review__slide-text">
-											1
-										</div>
-									</div>
-									<div class="review__slide swiper-slide">
-										<div class="review__slide-text">
-											2
-										</div>
-									</div>
-									<div class="review__slide swiper-slide">
-										<div class="review__slide-text">
-											3
-										</div>
-									</div>
-									<div class="review__slide swiper-slide">
-										<div class="review__slide-text">
-											4
-										</div>
-									</div>
-									<div class="review__slide swiper-slide">
-										<div class="review__slide-text">
-											5
-										</div>
-									</div>
+									<LandingTestimonialItem 
+										v-for="testim in testimonialsStore.testimonials"
+										:key="testim.id"
+										:testimonial="testim"
+									/>
 								</div>
 							</div>
 						</div>
@@ -1003,13 +538,13 @@ onMounted(() => {
 								</div>
 							</div>
 						</div>
-						<button type="button" class="faq__btn btn">
+						<a href="#products" class="faq__btn btn">
 							<span>Сделать заказ</span>
-						</button>
+						</a>
 					</div>
 				</div>
 			</section>
-			<section class="consultation">
+			<section class="consultation" id="questions">
 				<div class="consultation__container">
 					<div class="consultation__body">
 						<div class="consultation__info">
