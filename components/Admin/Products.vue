@@ -77,6 +77,7 @@ const saveOrderItems = async() => {
               :default-price="selectedItem?.price"
               :default-size="selectedItem?.size"
               :default-images="selectedItem?.images"
+              :default-video="selectedItem?.video"
               :id="selectedItem?.id"
               v-if="updateDialogVisible"
             />

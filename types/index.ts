@@ -16,20 +16,20 @@ export interface IAdminMenuItem {
 
 export interface IContactMail {
     username: string
-    type: string
-    contact: string
+    phone: string
+    email: string
+    text: string
 }
 
 export interface IOrderMail {
     username : string
     email?: string
     phone?: string
-    // services: IServicePrice[]
+    comment?: string
+    productTitle: string
     price: number
-    text?: string
-    invoiceId?: string
-    isPay?: boolean 
-    confirmation?: []
+    size: string
+    date: Date
 }
 
 export interface IMail<T> {
@@ -90,4 +90,12 @@ export interface IBotUser {
     id?: string
     username: string
     chatId: number
+}
+
+export interface IQuestion {
+    id?: string
+    question: string
+    answerTitle: string
+    answer: string
+    order?: number
 }

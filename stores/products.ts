@@ -14,7 +14,7 @@ export const useProductsStore = defineStore('products', {
     }),
 
     getters: {
-        getSomeProducts: (state) => state.products.slice(0, 4)
+        getSomeProducts: (state) => state.products.slice(0, 5)
     },
 
     actions: {
@@ -69,7 +69,10 @@ export const useProductsStore = defineStore('products', {
                 const data : Partial<IProduct> = {
                     title: item.title,
                     description: item.description,
-                    image: item.image
+                    image: item.image,
+                    price: item.price,
+                    size: item.size,
+                    video: item.video
                 }
 
                 updateDoc(docRef, data).then(() => {
@@ -79,6 +82,9 @@ export const useProductsStore = defineStore('products', {
                             s.title = item.title
                             s.description = item.description
                             s.image = item.image
+                            s.price = item.price
+                            s.size = item.size
+                            s.video = item.video
                         }
                     })
                     notify.SetNofication("Success", "Service item is successfully updated", "success")
@@ -104,6 +110,29 @@ export const useProductsStore = defineStore('products', {
                 } catch {
 
                 }
+            }
+        },
+
+        async AddVideoToProduct(src: string, id: string) {
+            const notify = useNotificationStore()
+
+            try {
+                const docRef = doc(db, "products", id as string)
+
+                const data : Partial<IProduct> = {
+                   video: src
+                }
+
+                updateDoc(docRef, data).then(() => {
+                    this.products.forEach(s => {
+                        if(s.id === id) {
+                           s.video = src
+                        }
+                    })
+                    notify.SetNofication("Success", "Service item is successfully updated", "success")
+                })    
+            } catch (error) {
+                
             }
         },
 

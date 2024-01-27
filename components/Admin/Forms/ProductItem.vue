@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Plus } from '@element-plus/icons-vue'
-import { uploadFile, deleteFile } from '~/services/uploadFile'
+import { uploadFile as uploadFileF, deleteFile } from '~/services/uploadFile'
 import { v4 as uuid} from 'uuid'
 import type { FormInstance, FormRules, UploadProps } from 'element-plus';
 import type { IProduct, IProductImage, IProductSize } from '~/types';
@@ -13,6 +13,7 @@ interface Props {
     defaultImage?: string
     defaultSize?: string
     defaultPrice?: number
+    defaultVideo?: string
     defaultImages?: IProductImage[] 
     id?: string 
 }
@@ -27,6 +28,7 @@ const defaultImage = ref<string | undefined>(props.defaultImage)
 const imageUrl = ref<string>()
 const uploadImage = ref<File>()
 
+const productsStore = useProductsStore()
 
 const handleAvatarSuccess: UploadProps['onSuccess'] = (
   response,
@@ -42,6 +44,7 @@ const ruleForm = reactive<Partial<IProduct>>({
   description: props.defaultDesc,
   price: props.defaultPrice,
   size: props.defaultSize,
+  video: props.defaultVideo
 
 })
 
@@ -77,12 +80,12 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
         if(uploadImage.value && !defaultImage.value) {
-            uploadFile(uploadImage.value, `images/products/${uuid()}`, addProductItem)
+          uploadFileF(uploadImage.value, `images/products/${uuid()}`, addProductItem)
         } else if(defaultImage.value && !uploadImage.value) {
             addProductItem(defaultImage.value)
         } else if(defaultImage.value && uploadImage.value) {
           deleteFile(`images/services/${defaultImage.value.match('[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')?.[0]}`)
-          uploadFile(uploadImage.value, `images/products/${uuid()}`, addProductItem)
+          uploadFileF(uploadImage.value, `images/products/${uuid()}`, addProductItem)
         } else {
             notify.SetNofication('Error', 'Image not selected or load', 'error')
         }
@@ -100,6 +103,7 @@ const addProductItem = async (src: string) => {
         image: src,
         price: ruleForm.price as number,
         size: ruleForm.size as string,
+        video: ruleForm.video as string,
         images: []
     }
     await props.submitFunc(item, props.id)
@@ -109,6 +113,32 @@ const addProductItem = async (src: string) => {
 
 const addImagesToProduct = () => {
     addImagesToProductModalActive.value = true
+}
+
+const addVideoToProduct = async (src: string) => {
+  await productsStore.AddVideoToProduct(src, props.id!)
+}
+
+const handleVideoUploadSuccess: UploadProps['onSuccess'] = async(
+  response,
+  uploadFile
+) => {
+  // imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+  if(!props.defaultVideo) {
+    console.log(uploadFile.name, uploadFile.raw)
+    await uploadFileF(uploadFile.raw!, `video/products/${uuid()}`, addVideoToProduct)
+  } else {
+    await deleteFile(`video/products/${props.defaultVideo.match('[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')?.[0]}`)
+    await uploadFileF(uploadFile.raw!, `video/products/${uuid()}`, addVideoToProduct)
+  }
+}
+
+const beforeVideoUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  if (rawFile.type !== 'video/mp4') {
+    ElMessage.error('Video must be MP4 format!')
+    return false
+  } 
+  return true
 }
 </script>
 
@@ -154,6 +184,9 @@ const addImagesToProduct = () => {
              <el-form-item label="Size:" prop="size">
                <el-input v-model="ruleForm.size" />
              </el-form-item>
+             <el-form-item label="Video Url:" prop="video">
+               <el-input v-model="ruleForm.video" />
+             </el-form-item>
              <el-form-item>
                <el-button type="primary" @click="submitForm(ruleFormRef)">
                  {{funcButtonLabel}}
@@ -183,6 +216,11 @@ const addImagesToProduct = () => {
 
 .avatar-uploader .el-upload:hover {
   border-color: var(--el-color-primary);
+}
+
+.upload-video {
+  /* margin-top: 10px; */
+  margin-left: 10px;
 }
 
 .el-icon.avatar-uploader-icon {

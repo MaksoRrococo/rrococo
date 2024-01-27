@@ -9,6 +9,8 @@ const contacts = useContactsStore()
 const products = useProductsStore()
 const gallery = useGalleryStore()
 const testimonials = useTestimonialsStore()
+const mails = useMailStore()
+const questions = useQuestionsStore()
 
 
 const loading = ref<boolean>(true)
@@ -29,6 +31,8 @@ onBeforeMount(async() => {
     await products.getImagesToProduct()
     await gallery.getGallerySectionItems()
     await testimonials.getTestimonialSectionItems()
+    await mails.getMailsItems()
+    await questions.getQuestionSectionItems()
 
     loading.value = false 
 })

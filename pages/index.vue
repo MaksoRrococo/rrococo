@@ -2,11 +2,17 @@
 import { initSliders } from '../utils/init_sliders'
 import { tabs } from '../utils/init_tabs'
 import { menuInit } from '../utils/main_menu'
+import AOS from 'aos'
+
+import 'aos/dist/aos.css'
 
 const contactsStore = useContactsStore()
 const galleryStore = useGalleryStore()
 const productsStore = useProductsStore()
 const testimonialsStore = useTestimonialsStore()
+const quaestionsStore = useQuestionsStore()
+
+const { questions } = storeToRefs(quaestionsStore)
 
 
 const isVideoEnabled = ref<boolean>(false)
@@ -15,6 +21,11 @@ const allProductsShow = ref<boolean>(false)
 const { width } = useWindowSize()
 
 onMounted(() => {
+	AOS.init({ 
+		offset: 100,
+		disable: 'mobile'
+		
+	})
     initSliders()
 	tabs()
 	menuInit()
@@ -24,7 +35,7 @@ onMounted(() => {
 
 <template>
     <section id="promo" class="promo">
-				<div class="promo__socials socials-head">
+				<div class="promo__socials socials-head" data-aos="fade-left">
 					<div class="socials-head__text">
 						<span>CВЯЗЬ С НАМИ</span>
 						<svg width="12" height="30" viewBox="0 0 12 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,10 +60,10 @@ onMounted(() => {
 				</div>
 				<div class="promo__container">
 					<div class="promo__body">
-						<h3 class="promo__subtitle">
+						<h3 class="promo__subtitle" data-aos="fade-up">
 							АВТОРСКАЯ УПАКОВКА РУЧНОЙ РАБОТЫ
 						</h3>
-						<h1 class="promo__title">
+						<h1 class="promo__title" data-aos="fade-right">
 							RROCOCO
 						</h1>
 						<div class="promo__image">
@@ -98,9 +109,9 @@ onMounted(() => {
 								<img src="~/assets/img/decor-image/decor-1.svg" alt="decor">
 							</div>
 						</div>
-						<div class="view__images">
+						<div class="view__images" >
 							<!-- <LandingViewSlider v-if="width < 800" /> -->
-							<LandingCircularSlider />
+							<LandingCircularSlider data-aos="zoom-in" />
 							
 						</div>
 						<!-- <button type="button" class="view__button">
@@ -123,7 +134,7 @@ onMounted(() => {
 						</div>
 					</div>
 					<div class="about__body">
-						<div class="about__images">
+						<div class="about__images" data-aos="fade-right">
 							<div class="about__img">
 								<picture><source srcset="~/assets/img/about-img.webp" type="image/webp"><img src="~/assets/img/about-img.png" alt="about-img"></picture>
 							</div>
@@ -131,7 +142,7 @@ onMounted(() => {
 								<picture><source srcset="~/assets/img/about-decor.webp" type="image/webp"><img src="~/assets/img/about-decor.png" alt="about-decor"></picture>
 							</div>
 						</div>
-						<div class="about__content">
+						<div class="about__content" data-aos="fade-left">
 							<div class="about__text">
 								<p>
 									Наша команда создает персонализированные элитные коробки для цветов и аксессуаров.
@@ -178,98 +189,10 @@ onMounted(() => {
 							<img src="~/assets/img/decor-image/decor-3.svg" alt="decor">
 						</div>
 					</div>
-					<div class="advantages__slider swiper">
+					<div class="advantages__slider swiper" :class="{'visible': width > 650}" >
 						<div class="advantages__wrapper swiper-wrapper">
-							
-							<div class="advantages__slide swiper-slide card-advantages">
-								<div class="card-advantages__number">
-									01
-								</div>
-								<div class="card-advantages__title">
-									ТОЛЬКО КАЧЕСТВЕННЫЕ МАТЕРИАЛЫ
-								</div>
-								<div class="card-advantages__text">
-									Мы используем только премиальные материалы для создания своих упаковок, качество и
-									детализация для нас главное
-								</div>
-								<div class="card-advantages__img">
-									<picture><source srcset="~/assets/img/advantages/image-1.webp" type="image/webp"><img src="~/assets/img/advantages/image-1.png" alt="image-1"></picture>
-								</div>
-							</div>
-						
-							<div class="advantages__slide swiper-slide card-advantages">
-								<div class="card-advantages__number">
-									02
-								</div>
-								<div class="card-advantages__title">
-									ДЕЛАЕМ ПОЛНОСТЬЮ ВРУЧНУЮ
-								</div>
-								<div class="card-advantages__text">
-									Создаем каждую деталь трепетно и аккуратно, доводим до идеала каждое изделие
-								</div>
-								<div class="card-advantages__img">
-									<picture><source srcset="~/assets/img/advantages/image-2.webp" type="image/webp"><img src="~/assets/img/advantages/image-2.png" alt="image-2"></picture>
-								</div>
-							</div>
-							<div class="advantages__slide swiper-slide card-advantages">
-								<div class="card-advantages__number">
-									03
-								</div>
-								<div class="card-advantages__title">
-									РАБОТАЕМ <br> НАД УНИКАЛЬНЫМ ДИЗАЙНОМ
-								</div>
-								<div class="card-advantages__text">
-									Именно авторский и неповторимый дизайн создает экслюзивную упаковку, у которой нет
-									аналогов
-								</div>
-								<div class="card-advantages__img">
-									<picture><source srcset="~/assets/img/advantages/image-3.webp" type="image/webp"><img src="~/assets/img/advantages/image-3.png" alt="image-3"></picture>
-								</div>
-							</div>
-							<div class="advantages__slide swiper-slide card-advantages">
-								<div class="card-advantages__number">
-									04
-								</div>
-								<div class="card-advantages__title">
-									РАБОТА С КЛИЕНТАМИ
-								</div>
-								<div class="card-advantages__text">
-									Имеем богатый опыт общения с клиентами, сможем найти подход и к Вам
-								</div>
-								<div class="card-advantages__img">
-									<picture><source srcset="~/assets/img/advantages/image-4.webp" type="image/webp"><img src="~/assets/img/advantages/image-4.png" alt="image-4"></picture>
-								</div>
-							</div>
-							<div class="advantages__slide swiper-slide card-advantages">
-								<div class="card-advantages__number">
-									05
-								</div>
-								<div class="card-advantages__title">
-									НАША УПАКОВКА УКРАСИТ ЛЮБОЕ ВАШЕ СОБЫТИЕ
-								</div>
-								<div class="card-advantages__text">
-									Упаковки от RR ROCOCO — это
-									шик и изыск, такая упаковка произведение искусства
-								</div>
-								<div class="card-advantages__img">
-									<picture><source srcset="~/assets/img/advantages/image-5.webp" type="image/webp"><img src="~/assets/img/advantages/image-5.png" alt="image-5"></picture>
-								</div>
-							</div>
-							<div class="advantages__slide swiper-slide card-advantages">
-								<div class="card-advantages__number">
-									06
-								</div>
-								<div class="card-advantages__title">
-									ДОСТАВКА В ЛЮБУЮ ТОЧКУ МИРА
-								</div>
-								<div class="card-advantages__text">
-									Мы доставляем нашу продукцию, в любую страну мира, с удовольствием украсим ваш
-									праздник
-								</div>
-								<div class="card-advantages__img">
-									<picture><source srcset="~/assets/img/advantages/image-6.webp" type="image/webp"><img src="~/assets/img/advantages/image-6.png" alt="image-6"></picture>
-								</div>
-							</div>
+							<LandingAdvantagesWithTitl v-if="width > 650"/>
+							<LandingAdvantages v-else />
 						</div>
 						<div class="swiper-scrollbar"></div>
 						<div class="swiper-pagination"></div>
@@ -298,7 +221,7 @@ onMounted(() => {
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
 						</div>
 					</div>
-					<div class="video__body" :class="{'video-enabled' : isVideoEnabled}">
+					<div class="video__body" :class="{'video-enabled' : isVideoEnabled}" data-aos="flip-left">
 						<div class="video__video-block">
 							<iframe :src="contactsStore.additionalInfo?.portfolioUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 							</iframe>
@@ -396,7 +319,7 @@ onMounted(() => {
 						<h2 class="info__title">
 							ПОДАРОЧНЫЕ УПАКОВКИ НА ЗАКАЗ
 						</h2>
-						<div class="info__text">
+						<div class="info__text" data-aos="fade-rigth">
 							<p>
 								Приемущество Rrococo заключается в том , что такой подход, такой креатив используем
 								только мы. мы создаем непревзойденный продукт у которого аналогов нет нигде ни в какой
@@ -420,7 +343,7 @@ onMounted(() => {
 							</a>
 						</div>
 					</div>
-					<div class="info__img">
+					<div class="info__img" data-aos="fade-left">
 						<picture>
 							<source srcset="~/assets/img/info-image-girl.webp" type="image/webp" media="(min-width: 1099.98px)">
 							<source srcset="~/assets/img/info-image-girl-mob.webp" type="image/webp" media="(max-width: 1099.98px)">
@@ -485,55 +408,22 @@ onMounted(() => {
 					<div class="faq__body">
 						<div data-tabs="767.98" class="faq__tabs tabs">
 							<nav data-tabs-titles class="tabs__navigation">
-								<button type="button" class="tabs__title _tab-active">Как мы осуществляем
-									доставку?</button>
-								<button type="button" class="tabs__title">Как оплатить заказ?</button>
-								<button type="button" class="tabs__title">Какие мы используем материалы?</button>
+								<button type="button" class="tabs__title"
+									v-for="(question, index) in questions"
+									:key="question.id"
+									:class="{' _tab-active': index == 0}"
+								>{{question.question}}</button>
 							</nav>
 							<div data-tabs-body class="tabs__content">
-								<div class="tabs__body">
+								<div class="tabs__body"
+									v-for="question in questions"
+									:key="question.id"
+								>
 									<div class="tabs__body-title">
-										Доставка от Rrococo
+										{{question.answerTitle}}
 									</div>
 									<div class="tabs__body-text">
-										<p>
-											Наша команда создает персонализированные элитные коробки для цветов и
-											аксессуаров.
-										</p>
-										<p>
-											Мы тщательно разрабатываем дизайн по потребностям наших клиентов и воплощаем
-											его в жизнь. мы не продаем коробки, мы создаем стиль жизни!
-										</p>
-									</div>
-								</div>
-								<div class="tabs__body">
-									<div class="tabs__body-title">
-										Как оплатить заказ
-									</div>
-									<div class="tabs__body-text">
-										<p>
-											Наша команда создает персонализированные элитные коробки для цветов и
-											аксессуаров.
-										</p>
-										<p>
-											Мы тщательно разрабатываем дизайн по потребностям наших клиентов и воплощаем
-											его в жизнь. мы не продаем коробки, мы создаем стиль жизни!
-										</p>
-									</div>
-								</div>
-								<div class="tabs__body">
-									<div class="tabs__body-title">
-										Какие мы используем материалы
-									</div>
-									<div class="tabs__body-text">
-										<p>
-											Наша команда создает персонализированные элитные коробки для цветов и
-											аксессуаров.
-										</p>
-										<p>
-											Мы тщательно разрабатываем дизайн по потребностям наших клиентов и воплощаем
-											его в жизнь. мы не продаем коробки, мы создаем стиль жизни!
-										</p>
+										{{question.answer}}
 									</div>
 								</div>
 							</div>
@@ -562,24 +452,7 @@ onMounted(() => {
 								<picture><source srcset="~/assets/img/consultation-decor.webp" type="image/webp"><img src="~/assets/img/consultation-decor.png" alt="consultation-decor"></picture>
 							</div>
 							<div class="consultation__inner">
-								<form action="#" class="consultation__form form-block">
-									<h3 class="form-block__title">
-										Получить бесплатную консультацию
-									</h3>
-									<input autocomplete="off" type="text" name="name" placeholder="Ваше имя" class="form-block__input">
-									<input autocomplete="off" type="text" name="phone" placeholder="Ваш телефон" class="form-block__input">
-									<input autocomplete="off" type="text" name="email" placeholder="Ваш Email" class="form-block__input">
-									<div class="checkbox">
-										<input id="c_1" class="checkbox__input" type="checkbox" value="1" name="">
-										<label for="c_1" class="checkbox__label"></label>
-										<a href="#" class="checkbox__link">
-											я согласен(на) на обработку персональных данных
-										</a>
-									</div>
-									<button type="submit" class="form-block__button btn">
-										<span>Отправить</span>
-									</button>
-								</form>
+								<LandingFeedbackForm />
 							</div>
 						</div>
 					</div>
@@ -588,5 +461,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
+.visible {
+	overflow: visible;
+}
 </style>

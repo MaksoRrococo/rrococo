@@ -25,11 +25,11 @@ export const adminMenu : IAdminMenuItem[] = [
         page: 'AdminTestimonials'
     },
 
-    // {
-    //     id: 4,
-    //     text: 'Questions',
-    //     page: 'AdminQuestions'
-    // },
+    {
+        id: 4,
+        text: 'Вопросы и ответы',
+        page: 'AdminQuestions'
+    },
 
     // {
     //     id: 5,

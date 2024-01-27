@@ -75,5 +75,8 @@ const leave = (e: MouseEvent) => {
 </template>
 
 <style scoped>
-
+.titl {
+  height: 100%;
+  display: flex;
+}
 </style>
