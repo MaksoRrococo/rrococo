@@ -16,7 +16,6 @@ const { questions } = storeToRefs(quaestionsStore)
 
 
 const isVideoEnabled = ref<boolean>(false)
-const allProductsShow = ref<boolean>(false)
 
 const { width } = useWindowSize()
 
@@ -251,31 +250,21 @@ onMounted(() => {
 						</div>
 					</div>
 					<div class="products__slider swiper">
-						<div class="products__wrapper swiper-wrapper" v-if="allProductsShow">
+						<div class="products__wrapper swiper-wrapper">
 							<LandingProductCard 
 								v-for="product in productsStore.products"
 								:key="product.id"
 								:product="product"
 							/>
-
-						</div>
-						<div class="products__wrapper swiper-wrapper" v-else>
-							<LandingProductCard 
-								v-for="product in productsStore.getSomeProducts"
-								:key="product.id"
-								:product="product"
-							/>
-
 						</div>
 						<div class="swiper-scrollbar"></div>
 						<div class="swiper-pagination"></div>
 					</div>
-					<button type="button" class="products__more btn" 
-						v-if="productsStore.products.length > 5"
-						@click="allProductsShow = true"
-					>
+					<NuxtLink to="/products/all" class="products__more btn" 
+						v-if="productsStore.products.length > 5" >
+					
 						<span>Показать больше</span>
-					</button>
+					</NuxtLink>
 				</div>
 			</section>
 			<section class="gallery">
