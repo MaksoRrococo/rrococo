@@ -83,6 +83,16 @@ onMounted(() => {
   right: -50px;
 }
 
+@media screen and (max-width: 1200px){
+  .slider__list__step-button_prev {
+  left: 5px;
+}
+
+.slider__list__step-button_next {
+  right: 5px;
+}
+}
+
 @media screen and (max-width: 770px){
     .slider {
         height: 65vh;
