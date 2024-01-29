@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { IMail, IOrderMail, IProduct } from '~/types';
+import dayjs from 'dayjs'
 
 interface Props {
     product: IProduct
@@ -26,6 +27,7 @@ onClickOutside(orderModal, e => {
 })
 
 const submitFormHandler = async (values: ISubmitedForm) => {
+	const dateTime = new Date()
     const mail: IMail<IOrderMail> = {
         type: 'order',
         isRead: false,
@@ -37,7 +39,7 @@ const submitFormHandler = async (values: ISubmitedForm) => {
             productTitle: props.product.title,
             price: props.product.price,
             size: props.product.size,
-            date: new Date()
+            date: dayjs(dateTime).format('DD.MM.YYYY hh:mm') 
         }
     }
 

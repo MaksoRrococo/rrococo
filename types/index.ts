@@ -29,7 +29,7 @@ export interface IOrderMail {
     productTitle: string
     price: number
     size: string
-    date: Date
+    date: string
 }
 
 export interface IMail<T> {

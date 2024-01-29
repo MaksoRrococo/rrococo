@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import type { IOrderMail, IMail } from '~/types';
-
+// import dayjs from 'dayjs'
 
 interface Props {
     mail: IMail<IOrderMail>
 }
 
 defineProps<Props>()
+
+// const convertDate = (value: any) => {
+//     const date = new Date(value.seconds * 1000)
+
+//     return dayjs(date).format('DD.MM.YYYY hh:mm')
+// } 
 </script>
 
 
