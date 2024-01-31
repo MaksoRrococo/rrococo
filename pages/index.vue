@@ -70,10 +70,10 @@ onMounted(() => {
 								<picture><source srcset="~/assets/img/promo-decor.webp" type="image/webp"><img src="~/assets/img/promo-decor.png" alt="decor"></picture>
 							</div>
 							<div v-prlx class="promo__rose-1">
-								<picture><source srcset="~/assets/img/rose-1.webp" type="image/webp"><img src="~/assets/img/rose-1.png" alt="rose"></picture>
+								<picture data-not-lazy><source srcset="~/assets/img/rose-1.webp" type="image/webp"><img src="~/assets/img/rose-1.png" alt="rose"></picture>
 							</div>
 							<div v-prlx class="promo__rose-2">
-								<picture><source srcset="~/assets/img/rose-2.webp" type="image/webp"><img src="~/assets/img/rose-2.png" alt="rose"></picture>
+								<picture data-not-lazy><source srcset="~/assets/img/rose-2.webp" type="image/webp"><img src="~/assets/img/rose-2.png" alt="rose"></picture>
 							</div>
 							<div class="promo__img">
 								<picture><source srcset="~/assets/img/promo-girl.webp" type="image/webp"><img src="~/assets/img/promo-girl.png" alt="girl"></picture>

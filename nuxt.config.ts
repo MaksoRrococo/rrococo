@@ -28,10 +28,32 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt', 
     '@pinia/nuxt',
-    '@element-plus/nuxt'
+    '@element-plus/nuxt',
+    'nuxt-lazy-load'
   ],
   components: {
     global: true,
     dirs: ['~/components']
   },
+  lazyLoad: {
+    // These are the default values
+    images: true,
+    videos: true,
+    audios: true,
+    iframes: true,
+    native: false,
+    directiveOnly: false,
+    
+    // Default image must be in the public folder
+    defaultImage: '/images/default-image.jpg',
+  
+    // To remove class set value to false
+    loadingClass: 'isLoading',
+    loadedClass: 'isLoaded',
+    appendClass: 'lazyLoad',
+    
+    observerConfig: {
+      // See IntersectionObserver documentation
+    }
+  }
 })
