@@ -222,7 +222,7 @@ onMounted(() => {
 					</div>
 					<div class="video__body" :class="{'video-enabled' : isVideoEnabled}" data-aos="flip-left">
 						<div class="video__video-block">
-							<iframe :src="contactsStore.additionalInfo?.portfolioUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+							<iframe  data-not-lazy :src="contactsStore.additionalInfo?.portfolioUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 							</iframe>
 						</div>
 						<div class="video__video-preloader">
