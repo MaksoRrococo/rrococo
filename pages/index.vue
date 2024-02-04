@@ -208,7 +208,7 @@ onMounted(() => {
 				<div class="video__decor-2">
 					<picture><source srcset="~/assets/img/video-decor-2.webp" type="image/webp"><img src="~/assets/img/video-decor-2.png" alt="decor"></picture>
 				</div>
-				<div class="video__container"  data-not-lazy>
+				<div class="video__container" >
 					<div class="video__head head-section">
 						<h2 class="head-section__title">
 							СОЗДАНИЕ НАШИХ УПАКОВОК
@@ -220,9 +220,9 @@ onMounted(() => {
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
 						</div>
 					</div>
-					<div class="video__body" :class="{'video-enabled' : isVideoEnabled}" data-aos="flip-left">
+					<div class="video__body" :class="{'video-enabled' : isVideoEnabled}" >
 						<div class="video__video-block">
-							<iframe  data-not-lazy :src="contactsStore.additionalInfo?.portfolioUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+							<iframe :src="contactsStore.additionalInfo?.portfolioUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 							</iframe>
 						</div>
 						<div class="video__video-preloader">
