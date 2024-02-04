@@ -208,7 +208,7 @@ onMounted(() => {
 				<div class="video__decor-2">
 					<picture><source srcset="~/assets/img/video-decor-2.webp" type="image/webp"><img src="~/assets/img/video-decor-2.png" alt="decor"></picture>
 				</div>
-				<div class="video__container">
+				<div class="video__container"  data-not-lazy>
 					<div class="video__head head-section">
 						<h2 class="head-section__title">
 							СОЗДАНИЕ НАШИХ УПАКОВОК
