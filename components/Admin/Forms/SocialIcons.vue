@@ -76,6 +76,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
                     <el-option label="Instagram" value="Instagram" />
                     <el-option label="Telegram" value="Telegram" />
                     <el-option label="Facebook" value="Facebook" />
+                    <el-option label="Youtube" value="Youtube" />
                 </el-select>
             </el-form-item>
             <el-form-item label="Link to social:" prop="link">

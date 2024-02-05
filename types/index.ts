@@ -6,7 +6,7 @@ export type TAdminSettingTab = 'AdminMain' | 'AdminProducts' | 'AdminServices' |
 
 
 export type TMailType = 'order' | 'contact'
-export type TSocial = 'Viber' | 'WhatsApp' | 'Instagram' | 'Telegram' | 'Facebook'
+export type TSocial = 'Viber' | 'WhatsApp' | 'Instagram' | 'Telegram' | 'Facebook' | 'Youtube'
 
 export interface IAdminMenuItem { 
     id: number
