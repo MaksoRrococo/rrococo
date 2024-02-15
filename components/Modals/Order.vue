@@ -35,7 +35,7 @@ const submitFormHandler = async (values: ISubmitedForm) => {
             username: values.name,
             email: values.email,
             phone: values.phone,
-            comment: values.comment as string,
+            comment: values.comment || '',
             productTitle: props.product.title,
             price: props.product.price,
             size: props.product.size,
