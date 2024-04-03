@@ -74,6 +74,11 @@ export const useMailStore = defineStore('mail', {
                 
         },
 
+        async setProductMailIsPayed(orderId: string) {
+            const mailsRef = collection(db, 'mail')
+            
+        }
+
        
     }
 })
