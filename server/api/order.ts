@@ -19,6 +19,8 @@ export default defineEventHandler(async (event) => {
             Цена: ${body.price}
             Размеры: ${body.size}
             Дата: ${body.date}
+            ID Заказа : ${body.orderId}
+            Статус: Ожидание оплаты 
         `)
        }
     }

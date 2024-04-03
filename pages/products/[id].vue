@@ -102,37 +102,37 @@ definePageMeta({
 					<div class="product-page__size size-product">
 						<div class="size-product__body">
 							<h4 class="size-product__title">
-								Размер:
+								{{ $t('products.product.size') }}:
 							</h4>
 							<div class="size-product__size">
 								{{product?.size}} см
 							</div>
 						</div>
 						<div class="size-product__text">
-							Размеры могут быть любые, уточняйте при заказе
+							{{ $t('products.product.size_desc') }}
 						</div>
 					</div>
 					<div class="product-page__price-block price-product">
 						<div class="price-product__body">
 							<h4 class="price-product__title">
-								Стоимость:
+								{{ $t('products.product.price') }}:
 							</h4>
 							<div class="price-product__price">
-								от <span>{{product?.price}} ₴</span>
+								{{ $t('products.product.from') }} <span>{{product?.price}} ₴</span>
 							</div>
 						</div>
 						<div class="price-product__text">
-							Рассчитать точную стоимость при заказе поможет менеджер
+							{{ $t('products.product.info') }}
 						</div>
 					</div>
 					<div class="product-page__bottom">
 						<button type="button" class="product-page__btn btn"
 							@click="orderHandler"
 						>
-							<span>Сделать заказ</span>
+							<span>{{ $t('buttons.create_order') }}</span>
 						</button>
 						<a href="#" class="product-page__questions" @click="navigateTo('/#questions')">
-							Есть вопросы? Напишите нам и мы с радостью поможем!
+							{{ $t('buttons.questions') }}
 						</a>
 					</div>
 				</div>

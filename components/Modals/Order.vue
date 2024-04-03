@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { IMail, IOrderMail, IProduct } from '~/types';
+import type { IWayForPayCreateFormParams } from '~/services/wayforpay';
 import dayjs from 'dayjs'
+import { v4 as uuid } from 'uuid'
 
 interface Props {
     product: IProduct
@@ -17,6 +19,9 @@ interface ISubmitedForm {
 
 const mailStore = useMailStore()
 
+const payModalActive = ref<boolean>(false)
+const htmlPayButton = ref<string>('')
+
 const props = defineProps<Props>()
 const emits = defineEmits(['close', 'orderDone'])
 
@@ -27,8 +32,11 @@ onClickOutside(orderModal, e => {
 })
 
 const submitFormHandler = async (values: ISubmitedForm) => {
+
+	const orderId = uuid()
 	const dateTime = new Date()
-    const mail: IMail<IOrderMail> = {
+
+	const mail: IMail<IOrderMail> = {
         type: 'order',
         isRead: false,
         mail: {
@@ -38,6 +46,8 @@ const submitFormHandler = async (values: ISubmitedForm) => {
             comment: values.comment || '',
             productTitle: props.product.title,
             price: props.product.price,
+			statusPay: 'Unpaid',
+			orderId: orderId,
             size: props.product.size,
             date: dayjs(dateTime).format('DD.MM.YYYY hh:mm') 
         }
@@ -49,12 +59,35 @@ const submitFormHandler = async (values: ISubmitedForm) => {
     })
 
     await mailStore.AddMailItem(mail)
+	
+	const pay: IWayForPayCreateFormParams = {
+		price: props.product.price.toString(),
+		buttonTitle: 'Оплатить',
+		orderId: orderId,
+		currency: 'UAH',
+		productName: props.product.title,
+		clientName: values.name,
+		clientEmail: values.email
+	}
 
-    emits('orderDone')
+	const html =  await $fetch('/api/wayforpay/createPayForm', {
+		method: 'POST',
+		body: pay
+	})
+
+	htmlPayButton.value = html
+	payModalActive.value = true
+    
+}
+
+const leaveRequestHandler = () => {
+	payModalActive.value = false
+	emits('orderDone')
 }
 </script>
 
 <template>
+	<ModalsPayWidget :show="payModalActive" :html="htmlPayButton" @leave-request="leaveRequestHandler"/>
    	<div  class="popup" :class="{'popup_show' : show}" >
 		<div class="popup__wrapper">
 			<div class="popup__content" ref="orderModal">
@@ -62,7 +95,7 @@ const submitFormHandler = async (values: ISubmitedForm) => {
 				<div class="popup__body">
 					<div class="popup__head">
 						<h3 class="popup__title">
-							Оформление заказа
+							{{ $t('order_modal.header') }}
 						</h3>
 						<div class="popup__decor">
 							<img src="~/assets/img/decor-image/decor-3.svg" alt="decor">
@@ -81,7 +114,7 @@ const submitFormHandler = async (values: ISubmitedForm) => {
 							</div>
 							<div class="product-item__size-block">
 								<div class="product-item__size-title">
-									Размер:
+									{{ $t('products.product.size') }}:
 								</div>
 								<div class="product-item__size">
 									{{product.size}} см
@@ -89,12 +122,13 @@ const submitFormHandler = async (values: ISubmitedForm) => {
 							</div>
 							<div class="product-item__price-block">
 								<div class="product-item__price-title">
-									Стоимость:
+									{{ $t('products.product.price') }}:
 								</div>
 								<div class="product-item__price">
-									от <span>{{product.price}} ₴</span>
+									{{ $t('products.product.from') }} <span>{{product.price}} ₴</span>
 								</div>
 							</div>
+							
 							<!-- <button type="button" class="product-item__delete">
 								<span>Удалить товар</span>
 								<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -16,27 +16,27 @@ const { additionalInfo } = storeToRefs(contactsStore)
 							<ul class="menu__list">
 								<li class="menu__item" @click="navigateTo('/#about')">
 									<a href="#about" class="menu__link">
-										о нас
+										{{ $t('menu.about_us') }}
 									</a>
 								</li>
 								<li class="menu__item" @click="navigateTo('/#products')">
 									<a href="#products" class="menu__link">
-										Наша продукция
+										{{ $t('menu.products') }}
 									</a>
 								</li>
 								<li class="menu__item" @click="navigateTo('/#view')">
 									<a href="#view" class="menu__link">
-										ОБЗОР 360<sup>o</sup>
+										{{ $t('menu.preview') }}
 									</a>
 								</li>
 								<li class="menu__item" @click="navigateTo('/#video')">
 									<a href="#video" class="menu__link">
-										видео
+										{{ $t('menu.video') }}
 									</a>
 								</li>
 								<li class="menu__item" @click="navigateTo('/#review')">
 									<a href="#review" class="menu__link">
-										отзывы
+										{{ $t('menu.testimonials') }}
 									</a>
 								</li>
 								<li class="menu__socials menu-socials">
@@ -107,7 +107,7 @@ const { additionalInfo } = storeToRefs(contactsStore)
 							{{additionalInfo?.tel}}
 						</a>
 						<div class="header__work-time">
-							c 9:00-до 20:00 без перерывов и вх.
+							{{ $t('menu.phone_desc') }}
 						</div>
 					</div>
 					<button type="button" class="icon-menu"><span></span></button>

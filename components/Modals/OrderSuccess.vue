@@ -15,13 +15,13 @@ defineProps<Props>()
 				<div class="popup__body">
 					<div class="popup__head">
 						<h3 class="popup__title">
-							Ваш заказ принят
+							{{ $t('success_modal.header') }}
 						</h3>
 						<div class="popup__decor">
 							<img src="~/assets/img/decor-image/decor-3.svg" alt="decor">
 						</div>
 						<div class="popup__text">
-							Наш менеджер свяжется с Вами в ближайшее время для уточнения деталей!
+							{{ $t('success_modal.message') }}
 						</div>
 					</div>
 				</div>

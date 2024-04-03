@@ -24,29 +24,29 @@ const props = defineProps<Props>()
                 <div class="product-card__size-block">
                     <div class="product-card__size-info">
                         <div class="product-card__size-title">
-                            Размер:
+                            {{ $t('products.product.size') }}:
                         </div>
                         <div class="product-card__size">
                             {{product.size}} см
                         </div>
                     </div>
                     <div class="product-card__size-text">
-                        размеры могут быть любые, уточняйте при заказе
+                       {{ $t('products.product.size_desc') }}
                     </div>
                 </div>
                 <div class="product-card__price-block">
                     <div class="product-card__price-text">
-                        Стоимость:
+                        {{ $t('products.product.price') }}:
                     </div>
                     <div class="product-card__price">
-                        от
+                        {{ $t('products.product.from') }}
                         <span>
                             {{product.price}} ₴
                         </span>
                     </div>
                 </div>
                 <NuxtLink :to="`/products/${product.id}`" class="product-card__link btn">
-                    <span>Подробнее</span>
+                    <span>{{ $t('buttons.more_details') }}</span>
                 </NuxtLink>
             </div>
     </div>

@@ -14,27 +14,27 @@ const contactsStore = useContactsStore()
 							<ul class="footer-menu__list">
 								<li class="footer-menu__item">
 									<a href="#about" class="footer-menu__link">
-										о нас
+										{{ $t('menu.about_us') }}
 									</a>
 								</li>
 								<li class="footer-menu__item">
 									<a href="#products" class="footer-menu__link">
-										Наша продукция
+										{{ $t('menu.products') }}
 									</a>
 								</li>
 								<li class="footer-menu__item">
 									<a href="#view" class="footer-menu__link">
-										ОБЗОР 360<sup>o</sup>
+										{{ $t('menu.preview') }}
 									</a>
 								</li>
 								<li class="footer-menu__item">
 									<a href="#video" class="footer-menu__link">
-										видео
+										{{ $t('menu.video') }}
 									</a>
 								</li>
 								<li class="footer-menu__item">
 									<a href="#review" class="footer-menu__link">
-										отзывы
+										{{ $t('menu.testimonials') }}
 									</a>
 								</li>
 							</ul>

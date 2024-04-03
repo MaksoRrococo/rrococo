@@ -48,7 +48,7 @@ const onSubmit = handleSubmit(async values => {
 <template>
     <form @submit="onSubmit" class="consultation__form form-block">
 		<h3 class="form-block__title">
-			Получить бесплатную консультацию
+			{{ $t('consultation.form.header') }}
 		</h3>
 		<input autocomplete="off" type="text" name="name" v-model="name" placeholder="Ваше имя" class="form-block__input">
         <span class="error">{{errors.name}}</span>
@@ -59,14 +59,14 @@ const onSubmit = handleSubmit(async values => {
 		<div class="checkbox">
 			<input id="c_1" class="checkbox__input" type="checkbox" value="1" v-model="accept" name="accept">
 			<label for="c_1" class="checkbox__label"></label>
-			<a href="#" class="checkbox__link">
-				я согласен(на) на обработку персональных данных
-			</a>
+			<NuxtLink to="/licenses_detail" class="checkbox__link">
+				{{ $t('consultation.form.deal') }}
+			</NuxtLink>
            
 		</div>
         <span class="error accept">{{errors.accept}}</span> 
 		<button type="submit" class="form-block__button btn">
-			<span>Отправить</span>
+			<span>{{ $t('buttons.send') }}</span>
 		</button>
 	</form>
 </template>

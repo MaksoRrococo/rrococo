@@ -17,9 +17,9 @@ defineProps<Props>()
 
 
 <template>
-    <div>
-        <h2 class="header-mail-title">Пользователь желает приобрести товар</h2>
+    <div class="mail">    
         <div class="mail-content">
+            <h2 class="header-mail-title">Пользователь желает приобрести товар</h2>
             <div class="content-item">Название товара: <span>{{mail.mail.productTitle}}</span></div>
             <div class="content-item">Размеры: <span>{{mail.mail.size}}</span></div>
             <div class="content-item">Цена: <span>{{mail.mail.price}}</span></div>
@@ -30,10 +30,21 @@ defineProps<Props>()
             <div class="content-item">Комментарий: <span>{{mail.mail.comment}}</span></div>
             <div class="content-item">Дата: <span>{{mail.mail.date}}</span></div>
         </div>
+        <div class="status">
+            Статус: 
+            <span
+                :class="[mail.mail.statusPay == 'Unpaid' ? 'red' : 'green']"
+            >{{mail.mail.statusPay == 'Unpaid' ? 'НЕОПЛАЧЕН' : 'ОПЛАЧЕН'}}</span>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.mail {
+    display: flex;
+    justify-content: space-between;
+}
+
 .header-mail-title {
     font-size: 18px;
     font-weight: 800;
@@ -54,4 +65,16 @@ defineProps<Props>()
     font-style: normal;
     font-weight: 800;
 } 
+
+.status {
+    font-weight: 900;
+}
+
+.green {
+    color: rgb(97, 189, 5);
+}
+
+.red {
+    color: rgb(204, 5, 5);
+}
 </style>

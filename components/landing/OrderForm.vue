@@ -11,6 +11,8 @@ interface ISubmitedForm {
     accept: boolean
 }
 
+const router = useRouter()
+
 const emits = defineEmits<{
     (e: 'submitForm', values: ISubmitedForm): void
 }>()
@@ -33,13 +35,18 @@ const { handleSubmit, errors } = useForm({
 const { value: name } = useField('name')
 const { value: phone } = useField('phone')
 const { value: email } = useField('email')
-const { value: accept } = useField('accept');
+const { value: accept } = useField('accept')
 const { value: comment } = useField('comment')
 
 
 const onSubmit = handleSubmit(async values => {
     emits('submitForm', values)
 });
+
+const toLicenseClickHandler = () => {
+    document.documentElement.classList.remove("popup-show", "lock")
+    router.push('/licenses_detail')
+}
 </script>
 
 <template>
@@ -55,13 +62,13 @@ const onSubmit = handleSubmit(async values => {
 		<div class="checkbox">
 			<input id="c_1" class="checkbox__input" type="checkbox" value="1" v-model="accept" name="accept">
 			<label for="c_1" class="checkbox__label"></label>
-			<a href="#" class="checkbox__link">
-				я согласен(на) на обработку персональных данных
-			</a>
+			<div @click="toLicenseClickHandler" class="checkbox__link" style="cursor: pointer;">
+				{{ $t('order_modal.deal') }}
+			</div>
 		</div>
         <span class="error accept">{{errors.accept}}</span>
 		<button type="submit" class="form-block__button btn">
-			<span>Отправить</span>
+			<span>{{ $t('buttons.send') }}</span>
 		</button>
 	</form>
 </template>
@@ -75,5 +82,27 @@ const onSubmit = handleSubmit(async values => {
 
 .accept {
     top: 10px
+}
+
+.card-data {
+    display: flex;
+    padding-top: 15px;
+    gap: 15px;
+}
+
+.card-input {
+    display: flex;
+    flex-direction: column;
+}
+.card-min-input {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+}
+
+@media screen and (max-width: 620px) {
+    .card-data {
+        flex-wrap: wrap;
+    }
 }
 </style>

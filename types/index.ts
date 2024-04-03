@@ -7,6 +7,7 @@ export type TAdminSettingTab = 'AdminMain' | 'AdminProducts' | 'AdminServices' |
 
 export type TMailType = 'order' | 'contact'
 export type TSocial = 'Viber' | 'WhatsApp' | 'Instagram' | 'Telegram' | 'Facebook' | 'Youtube'
+export type TStatusPay = 'Paid' | 'Unpaid'
 
 export interface IAdminMenuItem { 
     id: number
@@ -27,6 +28,8 @@ export interface IOrderMail {
     phone?: string
     comment?: string
     productTitle: string
+    statusPay: TStatusPay
+    orderId: string
     price: number
     size: string
     date: string
@@ -99,3 +102,38 @@ export interface IQuestion {
     answer: string
     order?: number
 }
+
+export enum PaymentAction {
+    Subscribe = 'subscribe',
+    Unsubscribe = 'unsubscribe',
+  }
+  
+  export enum PaymentPeriodicity {
+    Month = 'month',
+    Year = 'year',
+  }
+  
+  export enum Currency {
+    UAH = 'UAH',
+    USD = 'USD',
+    EUR = 'EUR',
+  }
+  
+  export enum PaymentStatus {
+    Subscribed = 'subscribed',
+  }
+  
+  export interface SubscriptionPaymentFormParams {
+    action: PaymentAction;
+    subscribePeriodicity: PaymentPeriodicity;
+    price: number;
+    currency: Currency;
+    description: string;
+    orderId: string;
+    buttonTitle: string;
+  }
+  
+  export interface OnUnsubscribeParams {
+    action: PaymentAction.Unsubscribe;
+    orderId: string;
+  }

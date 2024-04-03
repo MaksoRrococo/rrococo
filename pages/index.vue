@@ -36,7 +36,7 @@ onMounted(() => {
     <section id="promo" class="promo">
 				<div class="promo__socials socials-head" data-aos="fade-left">
 					<div class="socials-head__text">
-						<span>CВЯЗЬ С НАМИ</span>
+						<span>{{ $t('promo.contact').toUpperCase() }}</span>
 						<svg width="12" height="30" viewBox="0 0 12 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M5.46967 29.5303C5.76256 29.8232 6.23744 29.8232 6.53033 29.5303L11.3033 24.7574C11.5962 24.4645 11.5962 23.9896 11.3033 23.6967C11.0104 23.4038 10.5355 23.4038 10.2426 23.6967L6 27.9393L1.75736 23.6967C1.46447 23.4038 0.989592 23.4038 0.696698 23.6967C0.403805 23.9896 0.403805 24.4645 0.696698 24.7574L5.46967 29.5303ZM5.25 -3.27835e-08L5.25 29L6.75 29L6.75 3.27835e-08L5.25 -3.27835e-08Z" fill="url(#paint0_linear_6_126)" />
 							<defs>
@@ -60,7 +60,7 @@ onMounted(() => {
 				<div class="promo__container">
 					<div class="promo__body">
 						<h3 class="promo__subtitle" data-aos="fade-up">
-							АВТОРСКАЯ УПАКОВКА РУЧНОЙ РАБОТЫ
+							{{ $t('promo.description').toUpperCase() }}
 						</h3>
 						<h1 class="promo__title" data-aos="fade-right">
 							RROCOCO
@@ -99,10 +99,10 @@ onMounted(() => {
 					<div class="view__body">
 						<div class="view__head head-section head-section--gold">
 							<h2 class="head-section__title">
-								ОБЗОР
+								{{ $t('view.header') }}
 							</h2>
 							<h4 class="head-section__subtitle">
-								Детально показываем качество наших изделий
+								{{ $t('view.description') }}
 							</h4>
 							<div class="head-section__decor decor-mini">
 								<img src="~/assets/img/decor-image/decor-1.svg" alt="decor">
@@ -123,10 +123,10 @@ onMounted(() => {
 				<div class="about__container">
 					<div class="about__head head-section">
 						<h2 class="head-section__title">
-							О НАС
+							{{ $t('about.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							Расскажем почему стоит выбрать именно нашу продукцию
+							{{ $t('about.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
@@ -144,31 +144,18 @@ onMounted(() => {
 						<div class="about__content" data-aos="fade-left">
 							<div class="about__text">
 								<p>
-									Наша команда создает персонализированные элитные коробки для цветов и аксессуаров.
-									Мы тщательно разрабатываем дизайн по потребностям наших клиентов и воплощаем его в
-									жизнь. мы не продаем коробки, мы создаем стиль жизни!
+									{{ $t('about.p1') }}
 								</p>
 								<p>
-									приемущество <span>Rrococo</span> заключается в том , что такой подход, такой
-									креатив используем
-									только мы. мы создаем непревзойденный продукт у которого аналогов нет нигде ни в
-									какой стране мира! Когда наш покупатель получает заказанный продукт
-									<span>Rrococo</span>,
-									восхищение не возможно передать на словах , а потом когда он дарит своей любимой
-									женщине этот шедевр то восхищение которое испытывает женщина или мужчина , можно
-									умножить на бесконечность. любой купленный вами букет цветов не у нас, просто
-									меркнет по сравнению с нашим , мы не хотим быть повторяющимся продуктом на рынке, мы
-									вносим свои коррективы, и мы очень гордимся что наша команда <span>Rrococo</span>
-									может вам
-									предоставить то о чем вы так долго мечтали !
+									{{ $t('about.p2') }}
 								</p>
 							</div>
 							<div class="about__bottom">
 								<a href="#products" type="button" class="about__btn btn">
-									<span>Сделать заказ</span>
+									<span>{{ $t('buttons.create_order') }}</span>
 								</a>
 								<a href="#questions" class="about__link">
-									Есть вопросы? Напишите нам и мы с радостью поможем!
+									{{ $t('buttons.questions') }}
 								</a>
 							</div>
 						</div>
@@ -179,10 +166,10 @@ onMounted(() => {
 				<div class="advantages__container">
 					<div class="advantages__head head-section head-section--gold">
 						<h2 class="head-section__title">
-							ПРЕИМУЩЕСТВА
+							{{ $t('advantages.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							Авторская упаковка уникальна, и вот 6 причин почему
+							{{ $t('advantages.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-3.svg" alt="decor">
@@ -197,7 +184,7 @@ onMounted(() => {
 						<div class="swiper-pagination"></div>
 					</div>
 					<a href="#products" class="advantages__btn btn">
-						<span>Сделать заказ</span>
+						<span>{{ $t('buttons.create_order') }}</span>
 					</a>
 				</div>
 			</section>
@@ -211,10 +198,10 @@ onMounted(() => {
 				<div class="video__container" >
 					<div class="video__head head-section">
 						<h2 class="head-section__title">
-							СОЗДАНИЕ НАШИХ УПАКОВОК
+							{{ $t('video.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							В данном видео Вы може увидить процесс создания наших шедевров
+							{{ $t('video.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
@@ -240,10 +227,10 @@ onMounted(() => {
 				<div class="products__container">
 					<div class="products__head head-section head-section--gold">
 						<h2 class="head-section__title">
-							УПАКОВКИ НА ЗАКАЗ
+							{{ $t('products.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							Мы принимаем заказы на авторские упаковки любой сложности!
+							{{ $t('products.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-3.svg" alt="decor">
@@ -263,7 +250,7 @@ onMounted(() => {
 					<NuxtLink to="/products/all" class="products__more btn" 
 						v-if="productsStore.products.length > 5" >
 					
-						<span>Показать больше</span>
+						<span>{{ $t('buttons.more') }}</span>
 					</NuxtLink>
 				</div>
 			</section>
@@ -274,10 +261,10 @@ onMounted(() => {
 				<div class="gallery__container">
 					<div class="gallery__head head-section">
 						<h2 class="head-section__title">
-							Галерея
+							{{ $t('gallery.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							Собрали для Вас наши шедевры в одном месте!
+							{{ $t('gallery.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
@@ -306,29 +293,22 @@ onMounted(() => {
 				<div class="info__body">
 					<div class="info__content">
 						<h2 class="info__title">
-							ПОДАРОЧНЫЕ УПАКОВКИ НА ЗАКАЗ
+							{{ $t('info.header') }}
 						</h2>
 						<div class="info__text" data-aos="fade-rigth">
 							<p>
-								Приемущество Rrococo заключается в том , что такой подход, такой креатив используем
-								только мы. мы создаем непревзойденный продукт у которого аналогов нет нигде ни в какой
-								стране мира!
+								{{ $t('info.p1') }}
 							</p>
 							<p>
-								Когда наш покупатель получает заказанный продукт Rrococo, восхищение не возможно
-								передать на словах , а потом когда он дарит своей любимой женщине этот шедевр то
-								восхищение которое испытывает женщина или мужчина , можно умножить на бесконечность.
-								любой купленный вами букет цветов не у нас, просто меркнет по сравнению с нашим , мы не
-								хотим быть повторяющимся продуктом на рынке, мы вносим свои коррективы, и мы очень
-								гордимся что наша команда Rrococo может вам предоставить то о чем вы так долго мечтали !
+								{{ $t('info.p2') }}
 							</p>
 						</div>
 						<div class="info__bottom">
 							<a href="#products" class="info__btn btn">
-								<span>Сделать заказ</span>
+								<span>{{ $t('buttons.create_order') }}</span>
 							</a>
 							<a href="#questions" class="info__link">
-								Есть вопросы? Напишите нам и мы с радостью поможем!
+								{{ $t('buttons.questions') }}
 							</a>
 						</div>
 					</div>
@@ -346,10 +326,10 @@ onMounted(() => {
 				<div class="review__container">
 					<div class="review__head head-section">
 						<h2 class="head-section__title">
-							Отзывы наших клиентов
+							{{ $t('testimonials.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							Еще сомневаетесь заказывать ли у нас?
+							{{ $t('testimonials.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-2.svg" alt="decor">
@@ -385,10 +365,10 @@ onMounted(() => {
 				<div class="faq__container">
 					<div class="faq__head head-section head-section--gold">
 						<h2 class="head-section__title">
-							ВОПРОСЫ И ОТВЕТЫ
+							{{ $t('faq.header') }}
 						</h2>
 						<h4 class="head-section__subtitle">
-							Отвечаем на самые популярные вопросы
+							{{ $t('faq.description') }}
 						</h4>
 						<div class="head-section__decor">
 							<img src="~/assets/img/decor-image/decor-3.svg" alt="decor">
@@ -418,7 +398,7 @@ onMounted(() => {
 							</div>
 						</div>
 						<a href="#products" class="faq__btn btn">
-							<span>Сделать заказ</span>
+							<span>{{ $t('buttons.create_order') }}</span>
 						</a>
 					</div>
 				</div>
@@ -428,11 +408,11 @@ onMounted(() => {
 					<div class="consultation__body">
 						<div class="consultation__info">
 							<h2 class="consultation__title">
-								У ВАС ОСТАЛИСЬ ВОПРОСЫ?
+								{{ $t('consultation.header') }}
 							</h2>
 							<div class="consultation__text">
 								<p>
-									Оставьте ваши данные и наш консультант свяжется с Вами в ближайшее время!
+									{{ $t('consultation.description') }}
 								</p>
 							</div>
 						</div>
